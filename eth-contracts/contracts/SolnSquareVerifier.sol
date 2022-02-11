@@ -4,10 +4,9 @@ pragma solidity >=0.8.0;
 import './Verifier.sol';
 import './ERC721Mintable.sol';
 
-contract myVerifier is Verifier{}
 // TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 
-contract SolnSquareVerifier is casaToken {
+contract SolnSquareVerifier is casaToken, Verifier {
     struct solutions {
         uint index;
         address addr;
@@ -19,29 +18,39 @@ contract SolnSquareVerifier is casaToken {
 
     event solutionAdded(solutions s);
 
-    function addSolution(bytes32 _hash, address _addr, uint256 _index ) internal{
-        subbedSols[_hash].index = _index;
-        subbedSols[_hash].addr = _addr;
+    function getSolutions() public view returns(solutions[] memory){
+        return sols;
+    }
+
+    function addSolution(bytes32 _hash, address _addr, uint256 _index ) public{
+        solutions storage sol = subbedSols[_hash];
+        sol.index = _index;
+        sol.addr = _addr;
         sols.push(subbedSols[_hash]);
         emit solutionAdded(subbedSols[_hash]);
     }
 
-    function isSolutionUnique(bytes32 solHash) internal view returns (bool) {
-        return(subbedSols[solHash].addr != address(0));
+    function getProofHash(address to, uint256 tokenId, Proof memory proof) public pure returns (bytes32){
+        return keccak256(abi.encode(to,tokenId,proof));
+
     }
 
-    function mint(
+    function isSolutionUnique(bytes32 solHash) internal view returns (bool) {
+        return(subbedSols[solHash].addr == address(0));
+    }
+
+    function mintWithProof(
         address to,
         uint256 tokenId,
-        myVerifier.Proof memory proof
-
-    ) public{
-        bytes32 solHash = keccak256(abi.encode(to,tokenId,proof));
+        Proof memory proof,
+        uint[2] memory input
+    ) public {
+        bytes32 solHash = getProofHash(to, tokenId, proof);
         require (isSolutionUnique(solHash));
+        require(verifyTx(proof, input));
 
         addSolution(solHash, to, tokenId);
-
-        super.mint(to, tokenId);
+        mint(to, tokenId);
         
 
     }

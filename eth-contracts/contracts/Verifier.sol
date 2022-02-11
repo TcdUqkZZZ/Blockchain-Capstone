@@ -129,6 +129,7 @@ library Pairing {
             G1Point memory c1, G2Point memory c2,
             G1Point memory d1, G2Point memory d2
     ) internal view returns (bool) {
+
         G1Point[] memory p1 = new G1Point[](4);
         G2Point[] memory p2 = new G2Point[](4);
         p1[0] = a1;
@@ -140,6 +141,7 @@ library Pairing {
         p2[2] = c2;
         p2[3] = d2;
         return pairing(p1, p2);
+        
     }
 }
 
@@ -193,9 +195,11 @@ contract Verifier {
         for(uint i = 0; i < input.length; i++){
             inputValues[i] = input[i];
         }
+
         if (verify(inputValues, proof) == 0) {
             return true;
-        } else {
+            
+        } else {        
             return false;
         }
     }
