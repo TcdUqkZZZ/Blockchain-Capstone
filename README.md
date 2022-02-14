@@ -18,3 +18,5 @@ The capstone will build upon the knowledge you have gained in the course in orde
 To test code, either test locally with the tests in ./eth-contracts/tests, or try minting a token with the mint.js script.
 
 Contract address is 0xbB7d62d6b8413e379A614C50e68Fc542A75A50A2, and the abi can be found in ./eth-contracts/build.
+
+Opensea: https://testnets.opensea.io/collection/casatoken
