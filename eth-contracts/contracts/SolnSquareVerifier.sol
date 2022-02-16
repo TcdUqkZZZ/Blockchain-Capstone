@@ -1,10 +1,10 @@
 pragma solidity >=0.8.0;
 
-// TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
+//  define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
 import './Verifier.sol';
 import './ERC721Mintable.sol';
 
-// TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
+//  define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 
 contract SolnSquareVerifier is casaToken, Verifier {
     struct solutions {
@@ -41,7 +41,8 @@ contract SolnSquareVerifier is casaToken, Verifier {
 
     function mintWithProof(
         address to,
-        uint256 tokenId,
+        uint256 
+        tokenId,
         Proof memory proof,
         uint[2] memory input
     ) public {
@@ -52,7 +53,6 @@ contract SolnSquareVerifier is casaToken, Verifier {
         addSolution(solHash, to, tokenId);
         mint(to, tokenId);
         
-
     }
 
 }
