@@ -1,24 +1,25 @@
 const verifier = artifacts.require('Verifier');
 const proof = require('../proof.json');
-const fakeProof = {
+const fakeProof = {  
+  
     "proof": {
       "a": [
-        "0x27999b38e46eab0871ecb4200babe1a92a22c376555c8418c838f18112345678",
-        "0x099416bd7e2fc2609a1c4e15a9970d1f0d7b65661114e5869eb7c30612345678"
+        "0x2a988709c11835ca1aaeb6b916227fe1a9c3d341ba9c9ffd85aa704ada47df1b",
+        "0x301d684d53f8744212d715d023000620c2463e5ff7190f293edbe37a684c09b6"
       ],
       "b": [
         [
-          "0x04585a07a6aa925ab550ddde214232eb00cc298cf007b1db11fbe305baf28926",
-          "0x06a7c9ce7e200bbad6459ac366edea740f1c069498ad878dd58bcbde24ae481b"
+          "0x0d59bc052c6878bf93dabcbf59c3eaed1c404e0def1e781c70ebf1ce2c456430",
+          "0x0e7755709afb0fd69c0bc965a12d2fa62496c0f51c1d6c57a0371feabe58100c"
         ],
         [
-          "0x23f1cc8435bf1da4c4c7b5656d2458e34e7730560546cec34bab7a528558193e",
-          "0x162b21a47714784dcf8fdea17b926d7c6b78a0fbf83e0b431cfb195c4aa28119"
+          "0x03dc52e7eb59418381659399776d3a3d74b7e73867ed7803262f4bbca18cc3fa",
+          "0x0d5ae1386379e669c3c7faf8762029656c4cd65749664ed2a9930b2d7c5511a1"
         ]
       ],
       "c": [
-        "0x0f5250236d96b45f1eb13244d057ede553c421cae34bd06f00bdb8e42b1dad29",
-        "0x1553454736e9e4a7454a2293e970531f6d2e7b4d280557e9d955b910b99bdb07"
+        "0x2c7ebcac53d27d1dc3d5f47f03977bfe64e1d54db1d957def445df006ea0ede1",
+        "0x199866cc509e2df309f4763b74d5c6ce34fd04511d503239aa6fad9d38d5f2c9"
       ]
     },
     "inputs": [
